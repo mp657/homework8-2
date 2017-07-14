@@ -20,15 +20,17 @@ switch ($action) {
 
         // validate the scores
         // TODO: Convert this if statement to a for loop
-        if (empty($scores[0]) ||
-            empty($scores[1]) ||
-            empty($scores[2]) ||
-            !is_numeric($scores[0]) ||
-            !is_numeric($scores[1]) ||
-            !is_numeric($scores[2])) {
+	$is_valid = true;
+	for($i = 0; $i < count($scores);$i++){
+        if (empty($scores[$i]) || !is_numeric($scores[$i])) {
                 $scores_string = 'You must enter three valid numbers for scores.';
-                break;
+                $is_valid = false;
+		break;
         }
+	}
+	if(!$is_valid){
+	break;
+	}
 
         // process the scores
         // TODO: Add code that calculates the score total
